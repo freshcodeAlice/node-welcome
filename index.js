@@ -1,25 +1,12 @@
-const data = require('./utils/math.js')
+const http = require('http')
+const PORT = 3000
 
-require('kfuedfikuywer')
-/* How require works:
+let count = 0
 
-Resolving -> Loading -> Wrapping -> Evaluation -> Caching
+const requestListener = (req, res) => {
+  res.end(`hello from node! your request is ${count++}`)
+}
 
-I
-    core_modules
-    node_modules
-II
-    (Project)
-   2.1 .js
-        .json
-    2.2 directory
-    2.2.1 package.json -> "main": './entrypoint.js'
-    2.2.2 index.js | .json
-III 
-throw new Error
+const server = http.createServer(requestListener)
 
-
-
-
-
-*/
+server.listen(PORT)
